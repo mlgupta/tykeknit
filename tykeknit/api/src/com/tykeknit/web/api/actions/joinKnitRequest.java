@@ -1,0 +1,220 @@
+ /*
+  *****************************************************************************
+  *                       Confidentiality Information                         *
+  *                                                                           *
+  * This module is the confidential and proprietary information of            *
+  * tykeknit.; it is not to be copied, reproduced, or transmitted in any      *
+  * form, by any means, in whole or in part, nor is it to be used for any     *
+  * purpose other than that for which it is expressly provided without the    *
+  * written permission of tykeknit.                                           *
+  *                                                                           *
+  * Copyright (c) 2010-2011 tykeknit.  All Rights Reserved.                   *
+  *                                                                           *
+  *****************************************************************************
+  * $Id: joinKnitRequest.java,v 1.9 2011/05/13 01:59:22 manish Exp $
+  *****************************************************************************
+  */
+package com.tykeknit.web.api.actions;
+
+import com.tykeknit.web.api.actionforms.joinKnitRequestForm;
+import com.tykeknit.web.api.beans.Operations;
+import com.tykeknit.web.api.beans.User;
+import com.tykeknit.web.api.beans.UserSettings;
+import com.tykeknit.web.general.beans.DBConnection;
+import com.tykeknit.web.general.beans.GeneralUtil;
+import com.tykeknit.web.general.beans.TKConstants;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import java.sql.ResultSet;
+
+import javax.naming.Context;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import javax.sql.DataSource;
+
+import org.apache.log4j.Logger;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.util.MessageResources;
+
+import org.json.JSONObject;
+
+
+/**
+ * Method:  joinKnitRequest
+ * Creates a knit request. And sends a notification.
+ *
+ * Required Parameters:
+ *  txtToUserTblPk    - Parent to whom knit should be created
+ *
+ * Optional Parameters:
+ *  None
+ *
+ * Authentication Required:
+ *      Yes
+ *
+ * Returns:
+ * (start code)
+ *  { "methodName" : "joinKnitRequest",
+ *    "response" : "",
+ *    "responseStatus" : "success"
+ *  }
+ * (end code)
+ *
+ * Exception:
+ *  -401   -   Invalid Session
+ *  -401   -   Unauthorized User
+ *  -100   -   SQLException
+ *    -1   -   Invalid txtToUserTblPk
+ *
+ *  See Also:
+ *      <joinKnitAccept>
+ *
+ */
+
+public class
+
+joinKnitRequest extends Action {
+    static Logger logger = Logger.getLogger(TKConstants.LOGGER.toString());
+    
+    public ActionForward execute(ActionMapping mapping, 
+                                 ActionForm form,
+                                 HttpServletRequest request,
+                                 HttpServletResponse response) throws IOException, ServletException {
+      joinKnitRequestForm joinKnitRequestForm=null;
+      ServletContext context=null;
+      MessageResources messageResources = getResources(request);
+      String jdbcDS = null;
+      ResultSet rs = null;
+      String sqlString = null;
+
+      int rc = 0;
+      
+      String recipient=null;
+      String subject=null;
+      String message=null;
+      String from=null;
+      String smtpHost=null;
+      String domainName = null;
+      String appURL = null;
+      String confirmCode = null;
+
+
+      try {
+           logger.debug("Enter");
+           
+          joinKnitRequestForm=(joinKnitRequestForm)form;
+          context=servlet.getServletContext();
+          jdbcDS = (String)context.getAttribute("jdbcDS");
+          
+          logger.debug("jdbs-DS:" + jdbcDS);
+          
+          smtpHost = (String)context.getAttribute("smtpHost");
+          domainName = (String)context.getAttribute("domain");
+          appURL = (String)context.getAttribute("appURL");
+          
+          logger.debug("smtpHost:" + smtpHost);
+          logger.debug("domainName:" + domainName);
+          logger.debug("appURL:" + appURL);
+
+          Context ctx = new javax.naming.InitialContext();
+          DataSource ds = (DataSource)ctx.lookup(jdbcDS);
+          
+          HttpSession session = request.getSession();
+          
+          User user = (User) session.getAttribute("user");
+          UserSettings userSettings = (UserSettings) session.getAttribute("UserSettings");
+
+
+          PrintWriter out=response.getWriter();
+
+          JSONObject jsonStatus   = new JSONObject();
+          JSONObject jsonResponse = new JSONObject();
+
+          String userTblPk = user.getUserTblPk();
+          
+          String inviteToUserTblFk = joinKnitRequestForm.getTxtToUserTblPk();
+
+          // Call Add Invitation to Operations
+          rc = Operations.joinKnitRequest(Integer.parseInt(userTblPk),Integer.parseInt(inviteToUserTblFk),ds);
+          
+          if (rc < 0) {
+              jsonStatus.put(messageResources.getMessage("json.response.responsestatus.displayname"),messageResources.getMessage("json.response.message.failure"));
+              jsonStatus.put(messageResources.getMessage("json.response.methodname.displayname"),messageResources.getMessage("json.response.methodname.joinknitrequest"));
+              
+              jsonResponse.put(messageResources.getMessage("json.response.reasoncode.displayname"),messageResources.getMessage("json.response.methodname.joinknitrequest.message.failure.reasoncode.3"));
+              jsonResponse.put(messageResources.getMessage("json.response.reasonstr.displayname"),messageResources.getMessage("json.response.methodname.joinknitrequest.message.failure.reasonstr.3"));
+
+              jsonStatus.put(messageResources.getMessage("json.response.response.displayname"),jsonResponse);
+              
+              out.print(jsonStatus.toString());
+              out.close();
+              out.flush();
+              return mapping.findForward(null);
+          }
+          
+          confirmCode = String.valueOf(rc);
+
+          jsonStatus.put(messageResources.getMessage("json.response.responsestatus.displayname"),messageResources.getMessage("json.response.message.success"));
+          jsonStatus.put(messageResources.getMessage("json.response.methodname.displayname"),messageResources.getMessage("json.response.methodname.joinknitrequest"));
+
+          jsonStatus.put(messageResources.getMessage("json.response.response.displayname"),"");
+
+          DBConnection dbcon = new DBConnection(ds);
+          
+          sqlString  = "select a.user_id "
+                     +       ",a.user_notification_membership_request ";
+          sqlString += "from user_tbl            a ";
+          sqlString += "where a.user_tbl_pk = " + inviteToUserTblFk + " "
+                     +   "and a.date_eff <= CURRENT_DATE "
+                     +   "and a.date_inac > CURRENT_DATE ";
+
+          logger.debug(sqlString);
+          
+          rs = dbcon.executeQuery(sqlString);            
+          rs.next();
+          
+          if (rs.getBoolean(2) == true) {
+              recipient = rs.getString(1);
+              from = messageResources.getMessage("emailmessage.from");
+              subject = messageResources.getMessage("emailmessage.joinKnitRequest.subject");
+              subject = subject.replace("<FName>", user.getUserFName());
+              subject = subject.replace("<LName>", user.getUserLName());
+
+              message = messageResources.getMessage("emailmessage.joinKnitRequest.body");
+              
+              message += "<" + appURL + "/" + messageResources.getMessage("json.response.methodname.knitConfirm") + ".do?confirmCode=" + confirmCode + "&userTblPk=" + inviteToUserTblFk + "><br><br>";
+
+              message += user.getUserFName();
+              message += messageResources.getMessage("emailmessage.footer");
+              
+              message = message.replaceAll("<br>", "\n");
+              message = message.replace("<FName>", user.getUserFName());
+              message = message.replace("<LName>", user.getUserLName());
+
+              logger.debug(message);
+
+              GeneralUtil.postMail(recipient,subject,message,from,smtpHost);
+          }
+          dbcon.free(rs);
+          
+          out.print(jsonStatus.toString());
+          out.close();
+          out.flush();
+      } catch (Exception e) {
+        logger.error(e.toString());
+      } finally {
+         logger.debug("Exit");
+      }
+      return mapping.findForward(null);
+    }
+}

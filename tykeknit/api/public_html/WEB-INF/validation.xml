@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE form-validation PUBLIC
+         "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+         "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+
+	<global>
+		<!-- Custom Validator -->
+		<validator name="twofields" 
+                   classname="examples.validator.CustomValidator" 
+                   method="validateTwoFields" 
+                   methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.apache.struts.action.ActionMessages,
+                       javax.servlet.http.HttpServletRequest" 
+                   msg="errors.twofields" />
+                <constant>
+                  <constant-name>zip</constant-name>
+                  <constant-value>^\d{5}(-\d{4})?$</constant-value>
+                </constant>
+                <constant>
+                  <constant-name>phone</constant-name>
+                  <constant-value>^\d{3}[-]\d{3}[-]\d{4}$</constant-value>
+                </constant>
+	</global>
+
+	<formset>
+                <form name="LoginForm">
+                  <field property="txtUserId" depends="required,email,maxlength">
+                    <arg position="0" key="LoginForm.txtUserId.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtPassword" depends="required,maxlength">
+                    <arg position="0" key="LoginForm.txtPassword.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtDToken" depends="minlength,maxlength">
+                    <arg position="0" key="LoginForm.txtDToken.displayname"/>
+                    <arg position="1" name="minlength" key="${var:minlength}" resource="false"/>
+                    <var>
+                      <var-name>minlength</var-name>
+                      <var-value>64</var-value>
+                    </var>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>64</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="registerForm">
+                  <field property="txtFirstName" depends="required,maxlength">
+                    <arg position="0" key="registerForm.txtFirstName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtLastName" depends="required,maxlength">
+                    <arg position="0" key="registerForm.txtLastName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtEmail" depends="required,email,maxlength">
+                    <arg position="0" key="registerForm.txtEmail.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtPassword" depends="required,maxlength">
+                    <arg position="0" key="registerForm.txtPassword.displaynam"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <!--
+                  <field property="txtDOB" depends="required,date">
+                    <arg position="0" key="registerForm.txtDOB.displayname"/>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy-MM-dd</var-value>
+                    </var>
+                  </field>
+                  -->
+                  <!--
+                  <field property="txtParentType" depends="required">
+                    <arg position="0" key="registerForm.txtParentType.displayname"/>
+                  </field>
+                  -->
+                  <!--
+                  <field property="txtZip" depends="required,mask">
+                    <msg name="mask" key="registerForm.txtZip.maskmsg"/>
+                    <arg position="0" key="registerForm.txtZip.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${zip}</var-value>
+                    </var>
+                  </field>
+                  -->
+                  <field property="txtOPREmail" depends="email,maxlength">
+                    <arg position="0" key="registerForm.txtOPREmail.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="updateUserForm">
+                  <field property="txtFirstName" depends="required,maxlength">
+                    <arg position="0" key="updateUserForm.txtFirstName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtLastName" depends="required,maxlength">
+                    <arg position="0" key="updateUserForm.txtLastName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtPassword" depends="maxlength">
+                    <arg position="0" key="updateUserForm.txtPassword.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <!--
+                  <field property="txtDOB" depends="required,date">
+                    <arg position="0" key="updateUserForm.txtDOB.displayname"/>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy-MM-dd</var-value>
+                    </var>
+                  </field>
+                  <field property="txtZip" depends="required,mask">
+                    <msg name="mask" key="updateUserForm.txtZip.maskmsg"/>
+                    <arg position="0" key="updateUserForm.txtZip.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${zip}</var-value>
+                    </var>
+                  </field>
+                  -->
+                </form>
+                <form name="addKidForm">
+                  <field property="txtFirstName" depends="required,maxlength">
+                    <arg position="0" key="addKidForm.txtFirstName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtLastName" depends="required,maxlength">
+                    <arg position="0" key="addKidForm.txtLastName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtDOB" depends="required,date">
+                    <arg position="0" key="addKidForm.txtDOB.displayname"/>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy-MM-dd</var-value>
+                    </var>
+                  </field>
+                  <field property="txtGender" depends="required">
+                    <arg position="0" key="addKidForm.txtGender.displayname"/>
+                  </field>
+                </form>
+                <form name="updateKidForm">
+                  <field property="txtFirstName" depends="required,maxlength">
+                    <arg position="0" key="addKidForm.txtFirstName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtLastName" depends="required,maxlength">
+                    <arg position="0" key="addKidForm.txtLastName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtDOB" depends="required,date">
+                    <arg position="0" key="addKidForm.txtDOB.displayname"/>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy-MM-dd</var-value>
+                    </var>
+                  </field>
+                  <field property="txtGender" depends="required">
+                    <arg position="0" key="addKidForm.txtGender.displayname"/>
+                  </field>
+                </form>
+                <form name="addSecondaryPR">
+                  <field property="txtEmail" depends="email,maxlength">
+                    <arg position="0" key="addSecondaryPRForm.txtEmail.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="removeSecondaryPR">
+                  <field property="txtEmail" depends="email,maxlength">
+                    <arg position="0" key="removeSecondaryPRForm.txtEmail.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="uploadContactsForm">
+                  <field property="txtContacts" depends="required,maxlength">
+                    <arg position="0" key="uploadContactsForm.txtContacts.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>40000000</var-value>
+                    </var>
+                  </field>
+                  <field property="txtDryRunFlag" depends="required,mask">
+                    <arg position="0" key="uploadContactsForm.txtDryRunFlag.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>^[01]$</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="inviteUsersForm">
+                  <field property="txtEmails" depends="required,maxlength">
+                    <arg position="0" key="inviteUsersForm.txtEmails.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>4000</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="markUserPosition">
+                  <field property="txtLat" depends="required,float">
+                    <arg position="0" key="markUserPositionForm.txtLat.displayname"/>
+                  </field>
+                  <field property="txtLong" depends="required,float">
+                    <arg position="0" key="markUserPositionForm.txtLong.displayname"/>
+                  </field>
+                </form>
+                <form name="getChildProfileDetailsForm">
+                  <field property="txtCid" depends="required,integer">
+                    <arg position="0" key="getChildProfileDetailsForm.txtCid.displayname"/>
+                  </field>
+                </form>
+                <form name="getBuddiesForm">
+                  <field property="txtCid" depends="required,integer">
+                    <arg position="0" key="getBuddiesForm.txtCid.displayname"/>
+                  </field>
+                </form>
+                <form name="playdateRequestForm">
+                  <field property="txtOrganiserCid" depends="required">
+                    <arg position="0" key="playdateRequestForm.txtOrganiserCid.displayname"/>
+                  </field>
+                  <field property="txtPlaydateName" depends="required,maxlength">
+                    <arg position="0" key="playdateRequestForm.txtPlaydateName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtLocation" depends="required,maxlength">
+                    <arg position="0" key="playdateRequestForm.txtLocation.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtDate" depends="required,date">
+                    <arg position="0" key="playdateRequestForm.txtDate.displayname"/>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy-MM-dd</var-value>
+                    </var>
+                  </field>
+                  <field property="txtEndDate" depends="required,date">
+                    <arg position="0" key="playdateRequestForm.txtEndDate.displayname"/>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy-MM-dd</var-value>
+                    </var>
+                  </field>
+                  <field property="txtStartTime" depends="required">
+                    <arg position="0" key="playdateRequestForm.txtStartTime.displayname"/>
+                  </field>
+                  <field property="txtEndTime" depends="required">
+                    <arg position="0" key="playdateRequestForm.txtEndTime.displayname"/>
+                  </field>
+                  <field property="txtInvitees" depends="required,maxlength">
+                    <arg position="0" key="playdateRequestForm.txtInvitees.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>2000</var-value>
+                    </var>
+                  </field>
+                  <field property="txtMessage" depends="maxlength">
+                    <arg position="0" key="playdateRequestForm.txtMessage.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>200</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="playdateDetailsForm">
+                  <field property="txtPid" depends="required,integer">
+                    <arg position="0" key="playdateDetailsForm.txtPid.displayname"/>
+                  </field>
+                </form>
+                <form name="postWallMessageForm">
+                  <field property="txtPid" depends="required,integer">
+                    <arg position="0" key="postWallMessageForm.txtPid.displayname"/>
+                  </field>
+                  <field property="txtMessage" depends="required,maxlength">
+                    <arg position="0" key="postWallMessageForm.txtMessage.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>2000</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="postEventWallMessageForm">
+                  <field property="txtEventTblPk" depends="required,integer">
+                    <arg position="0" key="postEventWallMessageForm.txtEventTblPk.displayname"/>
+                  </field>
+                  <field property="txtEventWallMessage" depends="required,maxlength">
+                    <arg position="0" key="postEventWallMessageForm.txtEventWallMessage.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>2000</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="deleteWallMessageForm">
+                  <field property="txtMessageId" depends="required,integer">
+                    <arg position="0" key="deleteWallMessageForm.txtMessageId.displayname"/>
+                  </field>
+                </form>
+                <form name="deleteEventWallMessageForm">
+                  <field property="txtMessageId" depends="required,integer">
+                    <arg position="0" key="deleteEventWallMessageForm.txtMessageId.displayname"/>
+                  </field>
+                </form>
+                <form name="deleteDBMessageForm">
+                  <field property="txtMessageId" depends="required,integer">
+                    <arg position="0" key="deleteDBMessageForm.txtMessageId.displayname"/>
+                  </field>
+                </form>
+                <form name="getWallMessagesForm">
+                  <field property="txtPid" depends="required,integer">
+                    <arg position="0" key="getWallMessagesForm.txtPid.displayname"/>
+                  </field>
+                  <field property="txtTime" depends="date">
+                    <arg position="0" key="getWallMessagesForm.txtTime.displayname"/>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyyMMddHHmm</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="getEventWallMessagesForm">
+                  <field property="txtEventTblPk" depends="required,integer">
+                    <arg position="0" key="getEventWallMessagesForm.txtEventTblPk.displayname"/>
+                  </field>
+                </form>
+                <form name="postRSVPForm">
+                  <field property="txtPid" depends="required,integer">
+                    <arg position="0" key="postRSVPForm.txtPid.displayname"/>
+                  </field>
+                  <field property="txtRSVP" depends="required,maxlength">
+                    <arg position="0" key="postRSVPForm.txtRSVP.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>20</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="cancelPlaydateForm">
+                  <field property="txtPid" depends="required,integer">
+                    <arg position="0" key="cancelPlaydateForm.txtPid.displayname"/>
+                  </field>
+                </form>
+                <form name="getPlaydateParticipantsForm">
+                  <field property="txtPid" depends="required,integer">
+                    <arg position="0" key="getPlaydateParticipantsForm.txtPid.displayname"/>
+                  </field>
+                </form>
+                <form name="getUserProfileForm">
+                  <field property="txtUserTblPk" depends="required,integer">
+                    <arg position="0" key="getUserProfileForm.txtUserTblPk.displayname"/>
+                  </field>
+                </form>
+                <form name="joinKnitRequestForm">
+                  <field property="txtToUserTblPk" depends="required,integer">
+                    <arg position="0" key="joinKnitRequestForm.txtToUserTblPk.displayname"/>
+                  </field>
+                </form>
+                <form name="joinKnitAcceptForm">
+                  <field property="txtKnitInviteTblPk" depends="required,integer">
+                    <arg position="0" key="joinKnitAcceptForm.txtKnitInviteTblPk.displayname"/>
+                  </field>
+                  <field property="txtResponseCode" depends="required,intRange">
+                    <arg position="0" key="joinKnitAcceptForm.txtResponseCode.displayname"/>
+                    <arg position="1" name="intRange" key="${var:min}" resource="false"/>
+                    <arg position="2" name="intRange" key="${var:max}" resource="false"/>
+                    <var>
+                      <var-name>min</var-name>
+                      <var-value>0</var-value>
+                    </var>
+                    <var>
+                      <var-name>max</var-name>
+                      <var-value>3</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="getMapForm">
+                  <field property="txtLat" depends="required,float">
+                    <arg position="0" key="getMapForm.txtLat.displayname"/>
+                  </field>
+                  <field property="txtLong" depends="required,float">
+                    <arg position="0" key="getMapForm.txtLong.displayname"/>
+                  </field>
+                  <field property="txtRadius" depends="required,float">
+                    <arg position="0" key="getMapForm.txtRadius.displayname"/>
+                  </field>
+                  <field property="txtDegreeCode" depends="intRange">
+                    <arg position="0" key="getMapForm.txtDegreeCode.displayname"/>
+                    <arg position="1" name="intRange" key="${var:min}" resource="false"/>
+                    <arg position="2" name="intRange" key="${var:max}" resource="false"/>
+                    <var>
+                      <var-name>min</var-name>
+                      <var-value>1</var-value>
+                    </var>
+                    <var>
+                      <var-name>max</var-name>
+                      <var-value>4</var-value>
+                    </var>
+                  </field>
+                  <field property="txtGenderCode" depends="intRange">
+                    <arg position="0" key="getMapForm.txtGenderCode.displayname"/>
+                    <arg position="1" name="intRange" key="${var:min}" resource="false"/>
+                    <arg position="2" name="intRange" key="${var:max}" resource="false"/>
+                    <var>
+                      <var-name>min</var-name>
+                      <var-value>0</var-value>
+                    </var>
+                    <var>
+                      <var-name>max</var-name>
+                      <var-value>1</var-value>
+                    </var>
+                  </field>
+                  <field property="txtAgeCode" depends="intRange">
+                    <arg position="0" key="getMapForm.txtAgeCode.displayname"/>
+                    <arg position="1" name="intRange" key="${var:min}" resource="false"/>
+                    <arg position="2" name="intRange" key="${var:max}" resource="false"/>
+                    <var>
+                      <var-name>min</var-name>
+                      <var-value>1</var-value>
+                    </var>
+                    <var>
+                      <var-name>max</var-name>
+                      <var-value>5</var-value>
+                    </var>
+                  </field>
+                  <field property="txtSearchString" depends="maxlength">
+                    <arg position="0" key="registerForm.txtSearchString.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>30</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="setFBIdTokenForm">
+                  <field property="txtFBId" depends="required,maxlength">
+                    <arg position="0" key="setFBIdTokenForm.txtFBId.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>40</var-value>
+                    </var>
+                  </field>
+                  <field property="txtFBAuthToken" depends="required,maxlength">
+                    <arg position="0" key="setFBIdTokenForm.txtFBAuthToken.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>40</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="updateSettingsForm">
+                  <field property="txtUserProfileSetting" depends="required,intRange">
+                    <arg position="0" key="updateSettingsForm.txtUserProfileSetting.displayname"/>
+                    <arg position="1" name="intRange" key="${var:min}" resource="false"/>
+                    <arg position="2" name="intRange" key="${var:max}" resource="false"/>
+                    <var>
+                      <var-name>min</var-name>
+                      <var-value>1</var-value>
+                    </var>
+                    <var>
+                      <var-name>max</var-name>
+                      <var-value>3</var-value>
+                    </var>
+                  </field>
+                  <field property="txtUserContactSetting" depends="required,intRange">
+                    <arg position="0" key="updateSettingsForm.txtUserContactSetting.displayname"/>
+                    <arg position="1" name="intRange" key="${var:min}" resource="false"/>
+                    <arg position="2" name="intRange" key="${var:max}" resource="false"/>
+                    <var>
+                      <var-name>min</var-name>
+                      <var-value>1</var-value>
+                    </var>
+                    <var>
+                      <var-name>max</var-name>
+                      <var-value>3</var-value>
+                    </var>
+                  </field>
+                  <field property="boolUserNotificationMembershipRequest" depends="required">
+                    <arg position="0" key="updateSettingsForm.boolUserNotificationMembershipRequest.displayname"/>
+                  </field>
+                  <field property="boolUserNotificationPlaydate" depends="required">
+                    <arg position="0" key="updateSettingsForm.boolUserNotificationPlaydate.displayname"/>
+                  </field>
+                  <field property="boolUserNotificationPlaydateMessageBoard" depends="required">
+                    <arg position="0" key="updateSettingsForm.boolUserNotificationPlaydateMessageBoard.displayname"/>
+                  </field>
+                  <field property="boolUserNotificationGeneralMessages" depends="required">
+                    <arg position="0" key="updateSettingsForm.boolUserNotificationGeneralMessages.displayname"/>
+                  </field>
+                  <field property="boolUserLocationCurrentLocationSetting" depends="required">
+                    <arg position="0" key="updateSettingsForm.boolUserLocationCurrentLocationSetting.displayname"/>
+                  </field>
+                </form>
+                <form name="getDBActivitiesForm">
+                  <field property="txtResultLimit" depends="required,integer">
+                    <arg position="0" key="getDBActivitiesForm.txtResultLimit.displayname"/>
+                  </field>
+                  <field property="txtResultOffset" depends="required,integer">
+                    <arg position="0" key="getDBActivitiesForm.txtResultOffset.displayname"/>
+                  </field>
+                  <field property="txtPastActivitiesFlag" depends="required,mask">
+                    <arg position="0" key="getDBActivitiesForm.txtPastActivitiesFlag.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>^[01]$</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="updateMessageReadStatusForm">
+                  <field property="txtMessageId" depends="required,integer">
+                    <arg position="0" key="updateMessageReadStatusForm.txtMessageId.displayname"/>
+                  </field>
+                  <field property="txtReadStatus" depends="required,mask">
+                    <arg position="0" key="updateMessageReadStatusForm.txtReadStatus.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>^[NR]$</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="getDBInvitationMessagesForm">
+                  <field property="txtResultLimit" depends="required,integer">
+                    <arg position="0" key="getDBActivitiesForm.txtResultLimit.displayname"/>
+                  </field>
+                  <field property="txtResultOffset" depends="required,integer">
+                    <arg position="0" key="getDBInvitationMessagesForm.txtResultOffset.displayname"/>
+                  </field>
+                </form>
+                <form name="getDBInvitationsForm">
+                  <field property="txtResultLimit" depends="required,integer">
+                    <arg position="0" key="getDBInvitationsForm.txtResultLimit.displayname"/>
+                  </field>
+                  <field property="txtResultOffset" depends="required,integer">
+                    <arg position="0" key="getDBInvitationsForm.txtResultOffset.displayname"/>
+                  </field>
+                </form>
+                <form name="getDBMessagesForm">
+                  <field property="txtResultLimit" depends="required,integer">
+                    <arg position="0" key="getDBMessagesForm.txtResultLimit.displayname"/>
+                  </field>
+                  <field property="txtResultOffset" depends="required,integer">
+                    <arg position="0" key="getDBMessagesForm.txtResultOffset.displayname"/>
+                  </field>
+                </form>
+                <form name="getDBMessageDetailsForm">
+                  <field property="txtMsgId" depends="required,integer">
+                    <arg position="0" key="getDBMessageDetailsForm.txtMsgId.displayname"/>
+                  </field>
+                  <field property="txtMsgType" depends="required,mask">
+                    <msg name="mask" key="getDBMessageDetailsForm.txtMsgType.maskmsg"/>
+                    <arg position="0" key="getDBMessageDetailsForm.txtMsgType.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>^[IMP]$</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="setDBWannaHangForm">
+                  <field property="txtDBWannaHangStatus" depends="required">
+                    <arg position="0" key="setDBWannaHangForm.txtDBWannaHangStatus.displayname"/>
+                  </field>
+                </form>
+                <form name="sendDBMessageForm">
+                  <field property="txtToUserTblPk" depends="required,integer">
+                    <arg position="0" key="sendDBMessageForm.txtToUserTblPk.displayname"/>
+                  </field>
+                  <field property="txtMsgSubject" depends="required">
+                    <arg position="0" key="sendDBMessageForm.txtMsgSubject.displayname"/>
+                  </field>
+                  <field property="txtMsgBody" depends="maxlength">
+                    <arg position="0" key="sendDBMessageForm.txtMsgBody.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>200</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="sendForgottenPasswordForm">
+                  <field property="txtUserId" depends="required,email,maxlength">
+                    <arg position="0" key="sendForgottenPasswordForm.txtUserId.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="zipToGeolocForm">
+                  <field property="txtZip" depends="required,mask">
+                    <msg name="mask" key="zipToGeolocForm.txtZip.maskmsg"/>
+                    <arg position="0" key="zipToGeolocForm.txtZip.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${zip}</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="deleteChildPicForm">
+                  <field property="txtChildTblPk" depends="required,integer">
+                    <arg position="0" key="deleteChildPicForm.txtChildTblPk.displayname"/>
+                  </field>
+                </form>
+                <form name="addEventForm">
+                  <field property="txtEventTitle" depends="required,maxlength">
+                    <arg position="0" key="addEventForm.txtEventTitle.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtEventDetail" depends="required,maxlength">
+                    <arg position="0" key="addEventForm.txtEventDetail.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>200</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="getEventsForm">
+                  <field property="txtResultLimit" depends="required,integer">
+                    <arg position="0" key="getEventsForm.txtResultLimit.displayname"/>
+                  </field>
+                  <field property="txtResultOffset" depends="required,integer">
+                    <arg position="0" key="getEventsForm.txtResultOffset.displayname"/>
+                  </field>
+                  <field property="txtMyEventsFlag" depends="required,mask">
+                    <arg position="0" key="getEventsForm.txtMyEventsFlag.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>^[01]$</var-value>
+                    </var>
+                  </field>
+                </form>
+        </formset>
+</form-validation>

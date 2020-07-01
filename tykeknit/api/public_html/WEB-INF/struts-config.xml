@@ -1,0 +1,528 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+  <form-beans>
+     <form-bean name="LoginForm"                    type="com.tykeknit.web.api.actionforms.LoginForm"/>      
+     <form-bean name="logoutForm"                   type="com.tykeknit.web.api.actionforms.logoutForm"/>      
+     <form-bean name="registerForm"                 type="com.tykeknit.web.api.actionforms.registerForm"/>      
+     <form-bean name="registerConfirmForm"          type="com.tykeknit.web.api.actionforms.registerConfirmForm"/>      
+     <form-bean name="secondaryPRConfirmForm"       type="com.tykeknit.web.api.actionforms.secondaryPRConfirmForm"/>      
+     <form-bean name="knitConfirmForm"              type="com.tykeknit.web.api.actionforms.knitConfirmForm"/>      
+     <form-bean name="addKidForm"                   type="com.tykeknit.web.api.actionforms.addKidForm"/>      
+     <form-bean name="updateKidForm"                type="com.tykeknit.web.api.actionforms.updateKidForm"/>      
+     <form-bean name="lisKidsForm"                  type="com.tykeknit.web.api.actionforms.listKidsForm"/>      
+     <form-bean name="addSecondaryPRForm"           type="com.tykeknit.web.api.actionforms.addSecondaryPRForm"/>      
+     <form-bean name="removeSecondaryPRForm"        type="com.tykeknit.web.api.actionforms.removeSecondaryPRForm"/>      
+     <form-bean name="uploadContactsForm"           type="com.tykeknit.web.api.actionforms.uploadContactsForm"/>      
+     <form-bean name="getMapForm"                   type="com.tykeknit.web.api.actionforms.getMapForm"/>      
+     <form-bean name="markUserPositionForm"         type="com.tykeknit.web.api.actionforms.markUserPositionForm"/>      
+     <form-bean name="displayPhotoForm"             type="com.tykeknit.web.api.actionforms.displayPhotoForm"/>      
+     <form-bean name="inviteUsersForm"              type="com.tykeknit.web.api.actionforms.inviteUsersForm"/>      
+     <form-bean name="getChildProfileDetailsForm"   type="com.tykeknit.web.api.actionforms.getChildProfileDetailsForm"/>      
+     <form-bean name="getBuddiesForm"               type="com.tykeknit.web.api.actionforms.getBuddiesForm"/>      
+     <form-bean name="playdateRequestForm"          type="com.tykeknit.web.api.actionforms.playdateRequestForm"/>      
+     <form-bean name="playdateDetailsForm"          type="com.tykeknit.web.api.actionforms.playdateDetailsForm"/>      
+     <form-bean name="getWallMessagesForm"          type="com.tykeknit.web.api.actionforms.getWallMessagesForm"/>      
+     <form-bean name="postWallMessageForm"          type="com.tykeknit.web.api.actionforms.postWallMessageForm"/>      
+     <form-bean name="deleteWallMessageForm"        type="com.tykeknit.web.api.actionforms.deleteWallMessageForm"/>      
+     <form-bean name="getEventWallMessagesForm"     type="com.tykeknit.web.api.actionforms.getEventWallMessagesForm"/>      
+     <form-bean name="postEventWallMessageForm"     type="com.tykeknit.web.api.actionforms.postEventWallMessageForm"/>      
+     <form-bean name="deleteEventWallMessageForm"   type="com.tykeknit.web.api.actionforms.deleteEventWallMessageForm"/>      
+     <form-bean name="deleteDBMessageForm"          type="com.tykeknit.web.api.actionforms.deleteDBMessageForm"/>      
+     <form-bean name="postRSVPForm"                 type="com.tykeknit.web.api.actionforms.postRSVPForm"/>      
+     <form-bean name="cancelPlaydateForm"           type="com.tykeknit.web.api.actionforms.cancelPlaydateForm"/>      
+     <form-bean name="getPlaydateParticipantsForm"  type="com.tykeknit.web.api.actionforms.getPlaydateParticipantsForm"/>      
+     <form-bean name="getUserProfileForm"           type="com.tykeknit.web.api.actionforms.getUserProfileForm"/>      
+     <form-bean name="joinKnitRequestForm"          type="com.tykeknit.web.api.actionforms.joinKnitRequestForm"/>      
+     <form-bean name="joinKnitAcceptForm"           type="com.tykeknit.web.api.actionforms.joinKnitAcceptForm"/>      
+     <form-bean name="getFBIdTokenForm"             type="com.tykeknit.web.api.actionforms.getFBIdTokenForm"/>      
+     <form-bean name="setFBIdTokenForm"             type="com.tykeknit.web.api.actionforms.setFBIdTokenForm"/>      
+     <form-bean name="deleteAccountForm"            type="com.tykeknit.web.api.actionforms.deleteAccountForm"/>      
+     <form-bean name="uploadFBContactsForm"         type="com.tykeknit.web.api.actionforms.uploadFBContactsForm"/>      
+     <form-bean name="updateSettingsForm"           type="com.tykeknit.web.api.actionforms.updateSettingsForm"/>      
+     <form-bean name="getDBActivitiesForm"          type="com.tykeknit.web.api.actionforms.getDBActivitiesForm"/>      
+     <form-bean name="getDBFriendsForm"             type="com.tykeknit.web.api.actionforms.getDBFriendsForm"/>      
+     <form-bean name="getDBInvitationsForm"         type="com.tykeknit.web.api.actionforms.getDBInvitationsForm"/>      
+     <form-bean name="getDBInviteMessagesForm"      type="com.tykeknit.web.api.actionforms.getDBInviteMessagesForm"/>      
+     <form-bean name="getDBMessageDetailsForm"      type="com.tykeknit.web.api.actionforms.getDBMessageDetailsForm"/>      
+     <form-bean name="getDBMessagesForm"            type="com.tykeknit.web.api.actionforms.getDBMessagesForm"/>      
+     <form-bean name="getDBWannaHangForm"           type="com.tykeknit.web.api.actionforms.getDBWannaHangForm"/>      
+     <form-bean name="sendDBMessageForm"            type="com.tykeknit.web.api.actionforms.sendDBMessageForm"/>      
+     <form-bean name="setDBWannaHangForm"           type="com.tykeknit.web.api.actionforms.setDBWannaHangForm"/>      
+     <form-bean name="resendConfirmationURLForm"    type="com.tykeknit.web.api.actionforms.resendConfirmationURLForm"/>      
+     <form-bean name="sendForgottenPasswordForm"    type="com.tykeknit.web.api.actionforms.sendForgottenPasswordForm"/>      
+     <form-bean name="zipToGeolocForm"              type="com.tykeknit.web.api.actionforms.zipToGeolocForm"/>      
+     <form-bean name="getUserSettingsForm"          type="com.tykeknit.web.api.actionforms.getUserSettingsForm"/>      
+     <form-bean name="updateUserForm"               type="com.tykeknit.web.api.actionforms.updateUserForm"/>      
+     <form-bean name="updateMessageReadStatusForm"  type="com.tykeknit.web.api.actionforms.updateMessageReadStatusForm"/>      
+     <form-bean name="deleteUserPicForm"            type="com.tykeknit.web.api.actionforms.deleteUserPicForm"/>      
+     <form-bean name="deleteChildPicForm"           type="com.tykeknit.web.api.actionforms.deleteChildPicForm"/>      
+     <form-bean name="addEventForm"                 type="com.tykeknit.web.api.actionforms.addEventForm"/>      
+     <form-bean name="getEventsForm"                type="com.tykeknit.web.api.actionforms.getEventsForm"/>      
+  </form-beans>
+  
+  <global-forwards>
+      <forward name="welcome" path="/LoginAction.do"/>
+  </global-forwards>
+  
+  <action-mappings>
+    <action path="/LoginAction"
+            name="LoginForm"
+            type="com.tykeknit.web.api.actions.LoginAction"
+            validate="true"
+            input="/error.jsp"
+            scope="request">
+   </action>
+    <action path="/logout"
+            name="logoutForm"
+            type="com.tykeknit.web.api.actions.logout"
+            validate="true"
+            input="/error.jsp"
+            scope="request">
+   </action>
+    <action path="/register"
+            name="registerForm"
+            type="com.tykeknit.web.api.actions.register"
+            validate="true"
+            input="/error.jsp"
+            scope="request">
+    </action>
+    <action path="/registerConfirm"
+            name="registerConfirmForm"
+            type="com.tykeknit.web.api.actions.registerConfirm"
+            validate="true"
+            scope="request">
+            <forward name="success" path="/registerConfirm.jsp"/>
+    </action>
+    <action path="/secondaryPRConfirm"
+            name="secondaryPRConfirmForm"
+            type="com.tykeknit.web.api.actions.secondaryPRConfirm"
+            validate="true"
+            scope="request">
+            <forward name="success" path="/secondaryPRConfirm.jsp"/>
+    </action>
+    <action path="/knitConfirm"
+            name="knitConfirmForm"
+            type="com.tykeknit.web.api.actions.knitConfirm"
+            validate="true"
+            scope="request">
+            <forward name="success" path="/knitConfirm.jsp"/>
+    </action>
+    <action path="/addKid"
+            name="addKidForm"
+            type="com.tykeknit.web.api.actions.addKid"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/updateKid"
+            name="updateKidForm"
+            type="com.tykeknit.web.api.actions.updateKid"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/listKids"
+            name="listKidsForm"
+            type="com.tykeknit.web.api.actions.listKids"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/addSecondaryPR"
+            name="addSecondaryPRForm"
+            type="com.tykeknit.web.api.actions.addSecondaryPR"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/removeSecondaryPR"
+            name="removeSecondaryPRForm"
+            type="com.tykeknit.web.api.actions.removeSecondaryPR"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/uploadContacts"
+            name="uploadContactsForm"
+            type="com.tykeknit.web.api.actions.uploadContacts"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/inviteUsers"
+            name="inviteUsersForm"
+            type="com.tykeknit.web.api.actions.inviteUsers"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/getMap"
+            name="getMapForm"
+            type="com.tykeknit.web.api.actions.getMap"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/markUserPosition"
+            name="markUserPositionForm"
+            type="com.tykeknit.web.api.actions.markUserPosition"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/displayPhoto"
+            name="displayPhotoForm"
+            type="com.tykeknit.web.api.actions.displayPhoto"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/getChildProfileDetails"
+            name="getChildProfileDetailsForm"
+            type="com.tykeknit.web.api.actions.getChildProfileDetails"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/getBuddies"
+            name="getBuddiesForm"
+            type="com.tykeknit.web.api.actions.getBuddies"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/playdateRequest"
+            name="playdateRequestForm"
+            type="com.tykeknit.web.api.actions.playdateRequest"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/playdateDetails"
+            name="playdateDetailsForm"
+            type="com.tykeknit.web.api.actions.playdateDetails"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/getWallMessages"
+            name="getWallMessagesForm"
+            type="com.tykeknit.web.api.actions.getWallMessages"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/postWallMessage"
+            name="postWallMessageForm"
+            type="com.tykeknit.web.api.actions.postWallMessage"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/deleteWallMessage"
+            name="deleteWallMessageForm"
+            type="com.tykeknit.web.api.actions.deleteWallMessage"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/getEventWallMessages"
+            name="getEventWallMessagesForm"
+            type="com.tykeknit.web.api.actions.getEventWallMessages"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/postEventWallMessage"
+            name="postEventWallMessageForm"
+            type="com.tykeknit.web.api.actions.postEventWallMessage"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/deleteEventWallMessage"
+            name="deleteEventWallMessageForm"
+            type="com.tykeknit.web.api.actions.deleteEventWallMessage"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/deleteDBMessage"
+            name="deleteDBMessageForm"
+            type="com.tykeknit.web.api.actions.deleteDBMessage"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/postRSVP"
+            name="postRSVPForm"
+            type="com.tykeknit.web.api.actions.postRSVP"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/cancelPlaydate"
+            name="cancelPlaydateForm"
+            type="com.tykeknit.web.api.actions.cancelPlaydate"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/getPlaydateParticipants"
+            name="getPlaydateParticipantsForm"
+            type="com.tykeknit.web.api.actions.getPlaydateParticipants"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/getUserProfile"
+            name="getUserProfileForm"
+            type="com.tykeknit.web.api.actions.getUserProfile"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/joinKnitRequest"
+            name="joinKnitRequestForm"
+            type="com.tykeknit.web.api.actions.joinKnitRequest"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+    <action path="/joinKnitAccept"
+            name="joinKnitAcceptForm"
+            type="com.tykeknit.web.api.actions.joinKnitAccept"
+            validate="true"
+            input="/error.jsp"
+            roles="Auth"
+            scope="request">
+   </action>
+   <action path="/getFBIdToken"
+           name="getFBIdTokenForm"
+           type="com.tykeknit.web.api.actions.getFBIdToken"
+           validate="true"
+           input="/error.jsp"
+           roles="Auth"
+           scope="request">
+  </action>
+  <action path="/setFBIdToken"
+          name="setFBIdTokenForm"
+          type="com.tykeknit.web.api.actions.setFBIdToken"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/deleteAccount"
+          name="deleteAccountForm"
+          type="com.tykeknit.web.api.actions.deleteAccount"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/uploadFBContacts"
+          name="uploadFBContactsForm"
+          type="com.tykeknit.web.api.actions.uploadFBContacts"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/updateSettings"
+          name="updateSettingsForm"
+          type="com.tykeknit.web.api.actions.updateSettings"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/getDBActivities"
+          name="getDBActivitiesForm"
+          type="com.tykeknit.web.api.actions.getDBActivities"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/getDBFriends"
+          name="getDBFriendsForm"
+          type="com.tykeknit.web.api.actions.getDBFriends"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/getDBInvitations"
+          name="getDBInvitationsForm"
+          type="com.tykeknit.web.api.actions.getDBInvitations"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/getDBInviteMessages"
+          name="getDBInviteMessagesForm"
+          type="com.tykeknit.web.api.actions.getDBInviteMessages"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/getDBMessageDetails"
+          name="getDBMessageDetailsForm"
+          type="com.tykeknit.web.api.actions.getDBMessageDetails"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/getDBMessages"
+          name="getDBMessagesForm"
+          type="com.tykeknit.web.api.actions.getDBMessages"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/getDBWannaHang"
+          name="getDBWannaHangForm"
+          type="com.tykeknit.web.api.actions.getDBWannaHang"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/sendDBMessage"
+          name="sendDBMessageForm"
+          type="com.tykeknit.web.api.actions.sendDBMessage"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/setDBWannaHang"
+          name="setDBWannaHangForm"
+          type="com.tykeknit.web.api.actions.setDBWannaHang"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/resendConfirmationURL"
+          name="resendConfirmationURLForm"
+          type="com.tykeknit.web.api.actions.resendConfirmationURL"
+          validate="true"
+          input="/error.jsp"
+          scope="request">
+  </action>
+  <action path="/sendForgottenPassword"
+          name="sendForgottenPasswordForm"
+          type="com.tykeknit.web.api.actions.sendForgottenPassword"
+          validate="true"
+          input="/error.jsp"
+          scope="request">
+  </action>
+  <action path="/zipToGeoloc"
+          name="zipToGeolocForm"
+          type="com.tykeknit.web.api.actions.zipToGeoloc"
+          validate="true"
+          input="/error.jsp"
+          scope="request">
+  </action>
+  <action path="/getUserSettings"
+          name="getUserSettingsForm"
+          type="com.tykeknit.web.api.actions.getUserSettings"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/updateUser"
+          name="updateUserForm"
+          type="com.tykeknit.web.api.actions.updateUser"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/updateMessageReadStatus"
+          name="updateMessageReadStatusForm"
+          type="com.tykeknit.web.api.actions.updateMessageReadStatus"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/deleteUserPic"
+          name="deleteUserPicForm"
+          type="com.tykeknit.web.api.actions.deleteUserPic"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/deleteChildPic"
+          name="deleteChildPicForm"
+          type="com.tykeknit.web.api.actions.deleteChildPic"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/addEvent"
+          name="addEventForm"
+          type="com.tykeknit.web.api.actions.addEvent"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  <action path="/getEvents"
+          name="getEventsForm"
+          type="com.tykeknit.web.api.actions.getEvents"
+          validate="true"
+          input="/error.jsp"
+          roles="Auth"
+          scope="request">
+  </action>
+  </action-mappings>
+
+  <!-- Created to make sure that only authorized users access authorized pages -->
+  <controller processorClass="com.tykeknit.web.action.tykeknitRequestProcessor"/>
+
+  <!-- ========== Message Resources Definitions =========================== -->
+  <message-resources parameter="com.tykeknit.resources.ApplicationResources" />
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames" value="/org/apache/struts/validator/validator-rules.xml,
+                                              /WEB-INF/validation.xml"/>
+  </plug-in>
+</struts-config>

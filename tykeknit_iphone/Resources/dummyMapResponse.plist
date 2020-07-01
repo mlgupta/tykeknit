@@ -1,0 +1,74 @@
+(
+	{
+		id = 1;
+		Name = "Name One";
+		PicUrl = "PicOne.png";
+		Age = 12;
+		Location = "MG Road";
+		Degree = 1;
+		Status = "wanna hang";
+		Latitude = "18.464956";
+		Longitude = "73.89164";
+		Gender = Male;
+	},
+	{
+		id = 2;
+		Name = "Name Two";
+		PicUrl = "PicTwo.png";
+		Age = 11;
+		Location = "MG Road";
+		Degree = 2;
+		Status = "wanna hang";
+		Latitude = "16.464956";
+		Longitude = "73.89164";
+		Gender = Female;
+	},
+	{
+		id = 3;
+		Name = "Name Three";
+		PicUrl = "PicThree.png";
+		Age = 12;
+		Location = "MG Road";
+		Degree = 3;
+		Status = "wanna hang";
+		Latitude = "18.464956";
+		Longitude = "71.89164";
+		Gender = Male;
+	},
+	{
+		id = 4;
+		Name = "Name Four";
+		PicUrl = "PicFour.png";
+		Age = 12;
+		Location = "MG Road";
+		Degree = 1;
+		Status = "wanna hang";
+		Latitude = "17.464956";
+		Longitude = "73.89164";
+		Gender = Female;
+	},
+	{
+		id = 5;
+		Name = "Name Five";
+		PicUrl = "PicFive.png";
+		Age = 12;
+		Location = "MG Road";
+		Degree = 2;
+		Status = "wanna hang";
+		Latitude = "15.464956";
+		Longitude = "71.89164";
+		Gender = Male;
+	},
+	{
+		id = 6;
+		Name = "Name Six";
+		PicUrl = "PicSix.png";
+		Age = 12;
+		Location = "MG Road";
+		Degree = 3;
+		Status = "wanna hang";
+		Latitude = "18.464956";
+		Longitude = "76.89164";
+		Gender = Female;
+	},
+)

@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<data-sources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://xmlns.oracle.com/oracleas/schema/data-sources-10_1.xsd" xmlns="http://xmlns.oracle.com/oracleas/schema">
+    <connection-pool name="jdev-connection-pool-DBConnection1">
+        <connection-factory factory-class="org.postgresql.Driver" user="tykeknit" password="->DataBase_User_-W6H5XCj3qZJJE9_bXiRtaahYd7WY7pG" url="jdbc:postgresql://localhost/tykeknit"/>
+    </connection-pool>
+    <managed-data-source name="jdev-connection-managed-DBConnection1" jndi-name="jdbc/DBConnection1DS" connection-pool-name="jdev-connection-pool-DBConnection1"/>
+</data-sources>

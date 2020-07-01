@@ -1,0 +1,17 @@
+(
+	{
+		selectionCode = 1;
+		value = "Wanna Hang";
+		selected = 0;
+	},
+	{
+		selectionCode = 2;
+		value = "In-Knit";
+		selected = 0;
+	},
+	{
+		selectionCode = 4;
+		value = All;
+		selected = 1;
+	},
+)

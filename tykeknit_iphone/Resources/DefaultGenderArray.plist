@@ -1,0 +1,17 @@
+(
+	{
+		selectionCode = 0;
+		value = Male;
+		selected = 0;
+	},
+	{
+		selectionCode = 1;
+		value = Female;
+		selected = 0;
+	},
+	{
+		selectionCode = 2;
+		value = Both;
+		selected = 1;
+	},
+)

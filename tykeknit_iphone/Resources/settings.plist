@@ -1,0 +1,10 @@
+{
+	facebook = 0;
+	membershipRequest = 0;
+	playdate = 0;
+	messageBoard = 0;
+	generalMessages = 0;
+	currnetLocAsDefault = 0;
+	viewProfileOpt = 1;
+	contactOpt = 1;
+}

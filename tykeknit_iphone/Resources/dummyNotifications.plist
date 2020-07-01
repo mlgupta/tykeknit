@@ -1,0 +1,30 @@
+(
+	{
+		"notify_id" = 1;
+		"notify_data" = "Meeting at park on Jan 15, Play Date for kid name with boby sue";
+		"pic_url" = "dummyUserImage.png";
+		"notify_type" = "playdate_request";
+		timestamp = "2010-12-20 12:45:45";
+	},
+	{
+		"notify_id" = 2;
+		"notify_data" = "You have a friend request from boby sue";
+		"pic_url" = "UserImage.png";
+		"notify_type" = "connection_request";
+		timestamp = "2010-12-18 01:45:45";
+	},
+	{
+		"notify_id" = 3;
+		"notify_data" = "Meeting at park on Jan 15, Play Date for kid name with boby sue";
+		"pic_url" = "dummyUserImage.png";
+		"notify_type" = "playdate_request";
+		timestamp = "2010-12-14 02:15:15";
+	},
+	{
+		"notify_id" = 4;
+		"notify_data" = "You have a playdate request from Karan Joe";
+		"pic_url" = "BookCover.png";
+		"notify_type" = "connection_request";
+		timestamp = "2010-12-12 12:45:45";
+	},
+)

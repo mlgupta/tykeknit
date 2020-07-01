@@ -1,0 +1,32 @@
+(
+	{
+		selectionCode = 1;
+		value = "0 to 2";
+		selected = 0;
+	},
+	{
+		selectionCode = 2;
+		value = "2 - 4";
+		selected = 0;
+	},
+	{
+		selectionCode = 3;
+		value = "4-6";
+		selected = 0;
+	},
+	{
+		selectionCode = 4;
+		value = "6 - 8";
+		selected = 0;
+	},
+	{
+		selectionCode = 5;
+		value = "8+";
+		selected = 0;
+	},
+	{
+		selectionCode = 6;
+		value = All;
+		selected = 1;
+	},
+)
